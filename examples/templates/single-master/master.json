@@ -2,12 +2,12 @@
     "kind": "Template",
     "apiVersion": "v1",
     "metadata": {
-        "name": "crunchy-postgres-database-emptydir",
+        "name": "crunchy-postgis",
         "creationTimestamp": null,
         "annotations": {
             "description": "Crunchy PostgreSQL Single Database using EmptyDir",
             "iconClass": "icon-database",
-            "tags": "database,postgresql,crunchy"
+            "tags": "database,postgresql,crunchy,postgis"
         }
     },
     "parameters": [{
@@ -20,7 +20,7 @@
         "value": "master"
     }, {
         "name": "CCP_IMAGE_TAG",
-        "value": "centos7-9.5-1.2.7",
+        "value": "centos7-9.6-1.5.1",
         "description": "The image tag to pull with"
     }, {
         "name": "CCP_IMAGE_PREFIX",
@@ -86,7 +86,7 @@
         "spec": {
             "containers": [{
                 "name": "${SERVICE_NAME}",
-                "image": "${CCP_IMAGE_PREFIX}/crunchy-postgres:${CCP_IMAGE_TAG}",
+                "image": "${CCP_IMAGE_PREFIX}/crunchy-postgres-gis:${CCP_IMAGE_TAG}",
 		"imagePullPolicy": "IfNotPresent",
                 "readinessProbe": {
                     "exec": {
